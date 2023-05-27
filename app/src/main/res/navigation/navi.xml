@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.roomdatabaseoriginal.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_editFragment2"
+            app:destination="@id/editFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment2"
+        android:name="com.example.roomdatabaseoriginal.ui.EditFragment"
+        android:label="EditFragment"
+        tools:layout="@layout/fragment_edit">
+        <argument
+            android:name="isEdit"
+            app:argType="boolean" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="surname"
+            app:argType="string" />
+        <argument
+            android:name="phone_number"
+            app:argType="integer" />
+    </fragment>
+</navigation>
