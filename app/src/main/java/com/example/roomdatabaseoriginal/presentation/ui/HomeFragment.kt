@@ -1,4 +1,4 @@
-package com.example.roomdatabaseoriginal.ui
+package com.example.roomdatabaseoriginal.presentation.ui
 
 import android.graphics.Color
 import android.os.Bundle

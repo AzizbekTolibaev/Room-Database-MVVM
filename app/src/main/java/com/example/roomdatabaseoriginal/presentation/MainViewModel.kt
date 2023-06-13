@@ -1,35 +1,32 @@
 package com.example.roomdatabaseoriginal.presentation
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.roomdatabaseoriginal.data.UserDatabase
+import androidx.lifecycle.ViewModel
 import com.example.roomdatabaseoriginal.data.entity.User
-import com.example.roomdatabaseoriginal.domain.MainRepository
+import com.example.roomdatabaseoriginal.domain.usacase.impl.*
 
-class MainViewModel(application: Application): AndroidViewModel(application) {
-    private val repo = MainRepository(UserDatabase.getInstance(application).getUserDao())
+class MainViewModel: ViewModel() {
 
     private val _getAllUsersLiveData = MutableLiveData<MutableList<User>>()
     val getAllUserLiveData: MutableLiveData<MutableList<User>> get() = _getAllUsersLiveData
 
     suspend fun getAllUsers() {
-        _getAllUsersLiveData.value = repo.getAllUsers()
+        _getAllUsersLiveData.value = GetAllUsersImpl().getAllUsers()
     }
 
     suspend fun addUser(user: User) {
-        repo.addUser(user)
+        AddUserImpl().addUser(user)
     }
 
     suspend fun updateUser(user: User) {
-        repo.updateUser(user)
+        UpdateUserImpl().updateUser(user)
     }
 
     suspend fun searchUserByName(name: String) {
-        _getAllUsersLiveData.value = repo.searchUserByName(name)
+        _getAllUsersLiveData.value = SearchUserByNameImpl().searchUserByName(name)
     }
 
     suspend fun deleteUser(user: User) {
-        repo.deleteUser(user)
+        DeleteUserImpl().deleteUser(user)
     }
 }
